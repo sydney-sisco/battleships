@@ -4,3 +4,60 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+header {
+  text-align: center;
+  font-size: larger;
+
+  background-color: aqua;
+
+  width: 100%;
+}
+
+aside {
+  width: 20%;
+  background-color: beige;
+}
+
+.game-board-container {
+  width: 40%;
+  text-align: center;
+
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.game-board-container h3 {
+  width: 100%;
+}
+
+.player {
+  background-color: #7FFFD4;
+}
+
+.opponent {
+  background-color: #ff6347;
+}
+
+.square {
+  position: relative;
+  width: 10%;
+  border: 1px solid black;
+  font-size: xx-small;
+}
+
+.square:after {
+  content: "";
+  display: block;
+  padding-bottom: 50%;
+}
+
+.square:hover {
+  background-color: white;
+}
