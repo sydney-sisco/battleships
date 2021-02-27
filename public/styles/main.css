@@ -55,9 +55,13 @@ aside {
 .square:after {
   content: "";
   display: block;
-  padding-bottom: 50%;
+  padding-bottom: 100%;
 }
 
 .square:hover {
   background-color: white;
+}
+
+.ship {
+  background-color: gray;
 }

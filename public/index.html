@@ -10,16 +10,19 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <!-- App CSS -->
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="styles/main.css" type="text/css" />
 
   <!-- App JS -->
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="scripts/app.js"></script>
 
   <title>Battleships</title>
 </head>
 <body>
   <header>Battleships (until a better name is decided)</header>
-  <aside>things will be here</aside>
+  <aside>
+    <form class="new-game" method="POST" action="/game"><button type="submit">New Game</button></form>
+    <span class="gameID"></span>
+  </aside>
   <div class="game-board-container player">
     <h3>You</h3>
   </div>
