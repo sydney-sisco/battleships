@@ -68,7 +68,8 @@ app.post('/game', (req, res) => {
   // create game
   const newGameID = generateRandomString();
   gameStates[newGameID] = {
-    player1ID: req.session.userID
+    player1ID: req.session.userID,
+    phase: "MATCHING"
   };
 
   // return the gameID to the player
@@ -91,6 +92,12 @@ app.patch('/game/:id', (req, res) => {
     return;
   }
 
+  // if game doesn't exist, error
+  if (!gameStates[req.params.id]) {
+    res.sendStatus(404);
+    return;
+  }
+
   // if game is full, error
   if (gameIsFull(req.params.id, gameStates)) {
     res.sendStatus(400);
@@ -98,12 +105,12 @@ app.patch('/game/:id', (req, res) => {
   }
 
   // add the player to the game and set phase to PLANNING
-  gameStates[id].player2ID = req.params.id;
-  gameStates[id].phase = 'PLANNING';
+  gameStates[req.params.id].player2ID = req.session.userID;
+  gameStates[req.params.id].phase = 'PLANNING';
 
 
   res.json({ 
-    gameState: gameStates[gameID]
+    gameState: gameStates[req.params.id]
   });
 });
 

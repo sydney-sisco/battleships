@@ -9,6 +9,10 @@ $(document).ready(function() {
 
   // form submission for new game
   $('.new-game').submit(newGameHandler);
+  
+  
+  // form submission for joining game
+  $('.join-game').submit(joinGameHandler);
 });
 
 
@@ -19,12 +23,47 @@ const newGameHandler = (event) => {
   .then((data) => {
     // const res = JSON.parse(data);
     console.log(data);
+    $('.new-game').hide();
+    $('.join-game').hide();
     $('.gameID').text(`gameID: ${data}`);
   })
   .catch((data) => {
     console.log('catch:', data);
   });
 }
+
+const joinGameHandler = (event) => {
+  event.preventDefault();
+
+  console.log($('.join-game input').val());
+  const gameID = $('.join-game input').val();
+
+  $.ajax(`/game/${gameID}`, {
+    method: 'PATCH',
+  })
+  .then((data) => {
+    $('.new-game').hide();
+    $('.join-game').hide();
+    $('.gameID').text(`gameID: ${data}`);
+  }
+);  
+
+
+
+  // $.patch('/game')
+  // .then((data) => {
+  //   // const res = JSON.parse(data);
+  //   console.log(data);
+  //   $('.new-game').hide();
+  //   $('.join-game').hide();
+  //   $('.gameID').text(`gameID: ${data}`);
+  // })
+  // .catch((data) => {
+  //   console.log('catch:', data);
+  // });
+}
+
+
 
 const createGameBoard = ($board) => {
 

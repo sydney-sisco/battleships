@@ -18,10 +18,16 @@
   <title>Battleships</title>
 </head>
 <body>
+  <a href="/">cookie</a>
   <header>Battleships (until a better name is decided)</header>
   <aside>
     <form class="new-game" method="POST" action="/game"><button type="submit">New Game</button></form>
     <span class="gameID"></span>
+
+    <form class="join-game" method="POST" action="/game?_method=PATCH">
+      <input type="text" name="gameID">
+      <button type="submit">Join Game</button>
+    </form>
   </aside>
   <div class="game-board-container player">
     <h3>You</h3>
